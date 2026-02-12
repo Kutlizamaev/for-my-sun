@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,viewport-fit=cover"
+        />
+        <title>Для тебя ❤️</title>
+        <style>
+            :root {
+                --bgA: #fff6fb;
+                --bgB: #f3fbff;
+                --card: rgba(255, 255, 255, 0.72);
+                --stroke: rgba(20, 20, 40, 0.08);
+                --text: rgba(25, 25, 35, 0.92);
+                --muted: rgba(25, 25, 35, 0.62);
+                --accent: #ff6ea8;
+                --accent2: #8dd8ff;
+                --shadow: 0 18px 50px rgba(20, 20, 40, 0.1);
+                --shadow2: 0 10px 24px rgba(20, 20, 40, 0.08);
+                --radius: 26px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                font-family:
+                    ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Arial,
+                    'Apple Color Emoji',
+                    'Segoe UI Emoji';
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        900px 520px at 15% 15%,
+                        rgba(255, 110, 168, 0.25),
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        850px 520px at 85% 20%,
+                        rgba(141, 216, 255, 0.3),
+                        transparent 62%
+                    ),
+                    radial-gradient(
+                        700px 520px at 50% 92%,
+                        rgba(255, 193, 218, 0.22),
+                        transparent 55%
+                    ),
+                    linear-gradient(180deg, var(--bgA), var(--bgB));
+                overflow-x: hidden;
+            }
+
+            .wrap {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 18px 16px 48px;
+            }
+
+            header {
+                position: relative;
+                padding: 18px 16px 16px;
+                border: 1px solid var(--stroke);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.78),
+                    rgba(255, 255, 255, 0.55)
+                );
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+
+            header::before {
+                content: '';
+                position: absolute;
+                inset: -2px;
+                background:
+                    radial-gradient(
+                        520px 260px at 18% 20%,
+                        rgba(255, 110, 168, 0.3),
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        520px 260px at 82% 25%,
+                        rgba(141, 216, 255, 0.32),
+                        transparent 62%
+                    );
+                filter: blur(18px);
+                opacity: 0.8;
+                pointer-events: none;
+            }
+
+            .head {
+                position: relative;
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .title {
+                margin: 0;
+                font-size: 26px;
+                line-height: 1.15;
+                letter-spacing: 0.2px;
+            }
+
+            .subtitle {
+                margin: 8px 0 0;
+                color: var(--muted);
+                font-size: 14px;
+                line-height: 1.45;
+                max-width: 52ch;
+            }
+
+            .controls {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                margin-top: 10px;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                appearance: none;
+                border: 1px solid rgba(255, 110, 168, 0.25);
+                background: rgba(255, 255, 255, 0.7);
+                color: var(--text);
+                padding: 11px 14px;
+                border-radius: 999px;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                box-shadow: var(--shadow2);
+                transition:
+                    transform 0.08s ease,
+                    box-shadow 0.2s ease,
+                    background 0.2s ease;
+                user-select: none;
+            }
+            .btn:active {
+                transform: scale(0.98);
+            }
+
+            .btn.primary {
+                border-color: rgba(255, 110, 168, 0.35);
+                background: linear-gradient(
+                    135deg,
+                    rgba(255, 110, 168, 0.2),
+                    rgba(141, 216, 255, 0.18)
+                );
+            }
+
+            .pill {
+                font-size: 12px;
+                padding: 6px 10px;
+                border-radius: 999px;
+                border: 1px solid rgba(20, 20, 40, 0.1);
+                background: rgba(255, 255, 255, 0.6);
+                color: rgba(25, 25, 35, 0.58);
+                box-shadow: 0 8px 20px rgba(20, 20, 40, 0.06);
+            }
+
+            /* Sections */
+            .section {
+                margin-top: 16px;
+                border: 1px solid rgba(20, 20, 40, 0.08);
+                background: rgba(255, 255, 255, 0.58);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+
+            .sectionHead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 14px 16px;
+                border-bottom: 1px solid rgba(20, 20, 40, 0.08);
+                background: rgba(255, 255, 255, 0.55);
+            }
+            .sectionHead h2 {
+                margin: 0;
+                font-size: 16px;
+                letter-spacing: 0.2px;
+            }
+            .hint {
+                color: rgba(25, 25, 35, 0.55);
+                font-size: 12px;
+            }
+
+            /* Carousel */
+            .carousel {
+                display: flex;
+                gap: 12px;
+                padding: 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-padding: 16px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .carousel::-webkit-scrollbar {
+                height: 10px;
+            }
+            .carousel::-webkit-scrollbar-thumb {
+                background: rgba(20, 20, 40, 0.1);
+                border-radius: 999px;
+            }
+
+            .slide {
+                flex: 0 0 100%;
+                max-width: 100%;
+                scroll-snap-align: start;
+                border-radius: 20px;
+                position: relative;
+                overflow: hidden;
+                border: 1px solid rgba(20, 20, 40, 0.1);
+                background: rgba(255, 255, 255, 0.45);
+                box-shadow: 0 16px 36px rgba(20, 20, 40, 0.1);
+            }
+
+            @media (min-width: 820px) {
+                .slide {
+                    flex-basis: 45%;
+                    max-width: 45%;
+                }
+                .title {
+                    font-size: 30px;
+                }
+            }
+
+            .slide img {
+                width: 100%;
+                height: 56vh;
+                max-height: 520px;
+                object-fit: cover;
+                display: block;
+                transform: scale(1.02);
+                filter: saturate(1.02) contrast(1.02);
+            }
+
+            .cap {
+                position: absolute;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+                padding: 10px 12px;
+                border-radius: 16px;
+                background: rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(20, 20, 40, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                font-size: 13px;
+                color: rgba(25, 25, 35, 0.78);
+            }
+
+            /* Letter */
+            .letter {
+                padding: 16px;
+                display: grid;
+                gap: 12px;
+            }
+            .letterCard {
+                border: 1px solid rgba(20, 20, 40, 0.1);
+                background: rgba(255, 255, 255, 0.62);
+                border-radius: 20px;
+                padding: 14px 14px 12px;
+                box-shadow: 0 14px 34px rgba(20, 20, 40, 0.08);
+            }
+            .letterCard h3 {
+                margin: 0 0 8px;
+                font-size: 15px;
+            }
+            .letterCard p {
+                margin: 0 0 10px;
+                color: rgba(25, 25, 35, 0.65);
+                line-height: 1.6;
+                font-size: 14px;
+            }
+            .list {
+                margin: 8px 0 0;
+                padding-left: 18px;
+                color: rgba(25, 25, 35, 0.7);
+                line-height: 1.55;
+                font-size: 14px;
+            }
+
+            footer {
+                margin-top: 14px;
+                text-align: center;
+                color: rgba(25, 25, 35, 0.45);
+                font-size: 12px;
+            }
+
+            /* Hearts – нежнее и спокойнее */
+            .heart {
+                position: fixed;
+                bottom: -40px;
+                opacity: 0;
+                pointer-events: none;
+                animation: floatUp 9s linear infinite;
+                filter: drop-shadow(0 8px 12px rgba(20, 20, 40, 0.12));
+            }
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0) translateX(0) scale(0.9);
+                    opacity: 0;
+                }
+                12% {
+                    opacity: 0.42;
+                }
+                70% {
+                    opacity: 0.42;
+                }
+                100% {
+                    transform: translateY(-120vh) translateX(24px) scale(1.15);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <header>
+                <div class="head">
+                    <div>
+                        <h1 class="title">Для моей любименькой ❤️</h1>
+                        <p class="subtitle">
+                            Маленькая страничка про нас. Включай музыку и листай
+                            дальше ❤️
+                        </p>
+                        <div class="controls">
+                            <button class="btn primary" id="musicBtn">
+                                ▶︎ Включить музыку
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="section">
+                <div class="sectionHead">
+                    <h2>Наши моменты</h2>
+                    <div class="hint">Листай вправо →</div>
+                </div>
+
+                <div class="carousel" id="carousel">
+                    <figure class="slide">
+                        <img src="photos/1.jpg" alt="photo 1" />
+                        <figcaption class="cap">
+                            Такие мы вот модельки с тобой ❤️
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/2.jpg" alt="photo 2" />
+                        <figcaption class="cap">
+                            А вот тут мы милашки с тобой 🥰
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/3.jpg" alt="photo 3" />
+                        <figcaption class="cap">
+                            А вот эта фотка мне просто очень нравится)
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/4.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            А вот тут мы с тобой ждем шавуху 🤭
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/5.jpg" alt="photo 3" />
+                        <figcaption class="cap">
+                            Наша первая неделя в Казани 🥰
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/6.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            А вот тут мы сходили на котак 💕
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/7.jpg" alt="photo 3" />
+                        <figcaption class="cap">
+                            Мы просто ахуенные с тобой ❤️
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/8.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            Мне кажется наша самая удачная фотка 🤭
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/9.jpg" alt="photo 4" />
+                        <figcaption class="cap">Моя дурешка ❤️❤️❤️</figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/10.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            Взгляд у тебя просто бомба 😏
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slide">
+                        <img src="photos/11.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            Начало наших отношений 😌❤️
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/12.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            Это наши парные луки 🤭❤️
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/13.jpg" alt="photo 4" />
+                        <figcaption class="cap">
+                            Самый лучший день и ночь ❤️
+                        </figcaption>
+                    </figure>
+                    <figure class="slide">
+                        <img src="photos/14.jpg" alt="photo 4" />
+                        <figcaption class="cap">Я тебя обожаю 🥰</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="sectionHead">
+                    <h2>Письмо</h2>
+                </div>
+
+                <div class="letter">
+                    <div class="letterCard">
+                        <h3>Солнышко мое</h3>
+                        <p id="letterText">
+                            Я тебя бесконечно сильно люблю ❤️ Сейчас ты наверное
+                            сидишь и хрумкаешь суши 🤭🥰 Так вот знай, что ты
+                            самый дорогой человечек в моей жизни, без тебя я не
+                            представляю свою жизнь уже. Можешь представить, что
+                            я сейчас сижу, пишу этот текст, а ты даже не
+                            догадываешься об этом 🤭 и мне так нравится это
+                            чувство. А еще я безумно скучаю по тебе, опять это
+                            расстояние.. Но мы снова его прошли, как и в начале
+                            наших отношений, так и сейчас ❤️. Я даже не знаю что
+                            еще написать блин, просто хочу, чтобы это была
+                            миленькая штука, с которой ты будешь умиляться 🥹
+                            <br />
+                            <br />
+                            Просто знай, что я тебя очень люблю и всегда рядом,
+                            твой Фанька ❤️
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <footer>Сделано с любовью моему Солнышку ✨</footer>
+        </div>
+
+        <!-- Аудио -->
+        <audio id="bgm" src="music.mp3" preload="auto" loop></audio>
+
+        <script>
+            const audio = document.getElementById('bgm')
+            const btn = document.getElementById('musicBtn')
+
+            let playing = false
+
+            function setUI() {
+                btn.textContent = playing ? '⏸ Пауза' : '▶︎ Включить музыку'
+            }
+
+            btn.addEventListener('click', async () => {
+                try {
+                    if (!playing) {
+                        await audio.play()
+                        playing = true
+                    } else {
+                        audio.pause()
+                        playing = false
+                    }
+                    setUI()
+                } catch (e) {
+                    alert(
+                        'Нажми ещё раз — иногда телефон блокирует запуск музыки с первого раза',
+                    )
+                }
+            })
+
+            setUI()
+
+            const hearts = ['❤️', '💗', '💖', '💕']
+            function spawnHeart() {
+                const el = document.createElement('div')
+                el.className = 'heart'
+                el.textContent =
+                    hearts[Math.floor(Math.random() * hearts.length)]
+                el.style.left = Math.floor(Math.random() * 100) + 'vw'
+                el.style.animationDuration = 6 + Math.random() * 4 + 's'
+                el.style.opacity = '0'
+                el.style.fontSize = 14 + Math.random() * 14 + 'px'
+                document.body.appendChild(el)
+                requestAnimationFrame(() => {
+                    el.style.opacity = '1'
+                })
+                setTimeout(() => el.remove(), 11000)
+            }
+            setInterval(spawnHeart, 1500)
+        </script>
+    </body>
+</html>
